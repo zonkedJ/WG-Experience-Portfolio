@@ -30,6 +30,10 @@ html, body {
     scroll-behavior: smooth;
 }
 
+main {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #000000 0%, #0a2e0a 50%, #000000 100%);
