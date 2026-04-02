@@ -305,9 +305,15 @@ function initScrollEffects() {
         const currentScroll = window.pageYOffset;
         const nav = document.querySelector('nav');
         
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            nav.style.transform = 'translateY(-100%)';
+        // Only hide navigation on desktop (width >= 768px)
+        if (window.innerWidth >= 768) {
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
         } else {
+            // On mobile, always keep navigation visible
             nav.style.transform = 'translateY(0)';
         }
         
@@ -322,14 +328,23 @@ function initNavigation() {
     const links = document.querySelectorAll('#mobile-menu a');
 
     btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
+        console.log('Menú abierto');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        } else {
+            menu.classList.add('hidden');
+            menu.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
     });
 
     links.forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
             menu.classList.remove('flex');
+            document.body.style.overflow = 'auto';
         });
     });
 }
@@ -569,20 +584,3 @@ window.addEventListener('error', (e) => {
     // In production, you might want to send this to an error tracking service
 });
 
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.querySelector('[id*="menu-toggle"]'); 
-    const menu = document.querySelector('[id*="mobile-menu"]');
-    if (btn && menu) {
-        btn.onclick = () => {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        };
-        menu.querySelectorAll('a').forEach(link => {
-            link.onclick = () => {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            };
-        });
-    }
-});
