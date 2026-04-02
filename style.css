@@ -21,22 +21,21 @@
     box-sizing: border-box;
 }
 
-html {
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
     margin: 0;
     padding: 0;
-    width: 100%;
-    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #000000 0%, #0a2e0a 50%, #000000 100%);
     color: var(--text-primary);
-    overflow-x: hidden;
     cursor: none;
-    position: relative;
     min-height: 100vh;
-    width: 100%;
 }
 
 /* Animated Gradient Mesh Background */
