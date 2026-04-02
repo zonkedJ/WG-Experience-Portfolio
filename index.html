@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WG | Desarrollo Web & Testing</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50%' x='50%' text-anchor='middle' dominant-baseline='middle' font-size='60' fill='%2310b981'>WG</text></svg>">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-white overflow-x-hidden">
+    
+    <!-- Animated Gradient Mesh Background -->
+    <div id="gradientMesh" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Digital Grid Texture Overlay -->
+    <div id="gridTexture" class="fixed inset-0 pointer-events-none z-1 opacity-10"></div>
+    
+    <!-- Canvas Particles -->
+    <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-2"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-emerald-500/20 backdrop-blur-xl">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-black text-emerald-400 glitch-logo" data-text="WG">WG</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-gray-300 hover:text-emerald-400 transition-colors">Sobre Mí</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-emerald-400 transition-colors">Proyectos</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-emerald-400 transition-colors">Servicios</a>
+                    <a href="#faq" class="nav-link text-gray-300 hover:text-emerald-400 transition-colors">FAQ</a>
+                    <a href="#briefing" class="nav-link text-gray-300 hover:text-emerald-400 transition-colors">Briefing</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-emerald-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative">
+        <div class="container mx-auto px-6 text-center">
+            <!-- Energy Circles Animation Container -->
+            <div id="lottie-container" class="mb-8 flex justify-center" style="height: 350px;">
+                <div class="energy-circles">
+                    <div class="energy-circle circle-1"></div>
+                    <div class="energy-circle circle-2"></div>
+                    <div class="energy-circle circle-3"></div>
+                    <div class="energy-core"></div>
+                </div>
+            </div>
+            
+            <h1 id="heroTitle" class="hero-title text-6xl md:text-8xl lg:text-9xl font-black mb-6 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent glitch-title" data-text="Desarrollo Web & Testing">
+                Desarrollo Web & Testing
+            </h1>
+            <p id="heroSubtitle" class="hero-subtitle text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+                Transformo tus ideas en experiencias digitales impecables
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button class="magnetic-btn px-8 py-4 bg-emerald-500 text-black font-bold rounded-full hover:bg-emerald-400 transition-all transform hover:scale-105">
+                    Iniciar Proyecto
+                </button>
+                <button class="magnetic-btn px-8 py-4 border border-emerald-500 text-emerald-400 rounded-full hover:bg-emerald-500/10 transition-all">
+                    Ver Servicios
+                </button>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-emerald-400 text-sm font-medium">100% Responsive</span>
+                <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-emerald-400 text-sm font-medium">A+ Calidad</span>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-emerald-500 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center relative py-32">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h2 class="text-9xl md:text-[12rem] font-black text-emerald-900/10 z-1">WENDY</h2>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-5xl md:text-7xl font-black text-center mb-16 text-emerald-400 fade-in">
+                    Sobre Mí
+                </h2>
+                <div class="glass-card p-12 rounded-2xl border border-emerald-500/30 fade-in backdrop-blur-xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <!-- Columna Izquierda - Foto -->
+                        <div class="text-center">
+                            <div class="relative inline-block">
+                                <img src="mi-foto.jpg" alt="Wendy Gutierrez" class="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-2 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
+                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 pointer-events-none"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Columna Derecha - Contenido -->
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-6">Wendy Gutierrez</h3>
+                            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                                Soy una profesional en formación de la carrera de Análisis y Desarrollo de Software (ADSO), con bases sólidas en lógica de programación y frontend. Cuento con experiencia activa en uTest, encontrando bugs en plataformas reales y garantizando la calidad de software.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-emerald-400 text-sm font-medium">Estudiante ADSO</span>
+                                <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-emerald-400 text-sm font-medium">uTest Certified</span>
+                                <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-emerald-400 text-sm font-medium">QA Specialist</span>
+                                <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-emerald-400 text-sm font-medium">Frontend Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="min-h-screen flex items-center justify-center relative py-32">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h2 class="text-9xl md:text-[12rem] font-black text-emerald-900/10 z-1">PROYECTOS</h2>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 text-emerald-400">
+                Proyectos ADSO
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Project 1 - Farmacia Digital -->
+                <div class="project-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="mb-6">
+                        <!-- Image Slider -->
+                        <div class="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-in-out h-full" id="farmacia-slider">
+                                <img src="farmacia.png" alt="Farmacia Digital - Vista Principal" class="w-full h-full object-cover flex-shrink-0">
+                                <img src="farmacia1.png" alt="Farmacia Digital - Catálogo" class="w-full h-full object-cover flex-shrink-0">
+                                <img src="farmacia2.png" alt="Farmacia Digital - Carrito" class="w-full h-full object-cover flex-shrink-0">
+                            </div>
+                            <!-- Slider Controls -->
+                            <button onclick="slideProject('farmacia', -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-emerald-500/50 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <button onclick="slideProject('farmacia', 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-emerald-500/50 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <!-- Slider Indicators -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full" id="farmacia-indicator-0"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="farmacia-indicator-1"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="farmacia-indicator-2"></span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Farmacia Digital</h3>
+                        <p class="text-gray-400 mb-4">
+                            E-commerce Farmacéutico: Carrito, Búsqueda, Citas
+                        </p>
+                        <div class="space-y-2 text-gray-300 mb-6">
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                React.js + Node.js
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                Express + PostgreSQL
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                QA Testing Completo
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="magnetic-btn w-full py-3 bg-emerald-500/20 border border-emerald-500 rounded-full text-emerald-400 hover:bg-emerald-500/30 transition-all">
+                                Ver Capturas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 - Veterinaria E-clinic -->
+                <div class="project-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="mb-6">
+                        <!-- Image Slider -->
+                        <div class="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-in-out h-full" id="veterinaria-slider">
+                                <img src="veterinaria1.png" alt="Veterinaria E-clinic - Dashboard" class="w-full h-full object-cover flex-shrink-0">
+                                <img src="veterinaria2.png" alt="Veterinaria E-clinic - Citas" class="w-full h-full object-cover flex-shrink-0">
+                                <img src="veterinaria3.png" alt="Veterinaria E-clinic - Historial" class="w-full h-full object-cover flex-shrink-0">
+                                <img src="veterinaria4.png" alt="Veterinaria E-clinic - Inventario" class="w-full h-full object-cover flex-shrink-0">
+                            </div>
+                            <!-- Slider Controls -->
+                            <button onclick="slideProject('veterinaria', -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-emerald-500/50 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <button onclick="slideProject('veterinaria', 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-emerald-500/50 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <!-- Slider Indicators -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full" id="veterinaria-indicator-0"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="veterinaria-indicator-1"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="veterinaria-indicator-2"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="veterinaria-indicator-3"></span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Veterinaria E-clinic</h3>
+                        <p class="text-gray-400 mb-4">
+                            Sistema Integral Veterinario: Citas, Inventario, Historial
+                        </p>
+                        <div class="space-y-2 text-gray-300 mb-6">
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                React + Node.js
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                Base de Datos MySQL
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                Testing Manual y Automatizado
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="magnetic-btn w-full py-3 bg-emerald-500/20 border border-emerald-500 rounded-full text-emerald-400 hover:bg-emerald-500/30 transition-all">
+                                Ver Capturas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="min-h-screen flex items-center justify-center relative py-32">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h2 class="text-9xl md:text-[12rem] font-black text-emerald-900/10 z-1">SERVICIOS</h2>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 text-emerald-400">
+                Mis Servicios
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <!-- Service 1 -->
+                <div class="service-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Landing Pages</h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Páginas de alta conversión optimizadas para resultados
+                    </p>
+                    <div class="space-y-2 text-gray-300 text-sm">
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Responsive
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            SEO
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Formularios
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">QA/Testing</h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Auditoría gratuita y testing profesional
+                    </p>
+                    <div class="space-y-2 text-gray-300 text-sm">
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Testing funcional
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Usabilidad
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Auditoría Gratis
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">UX/UI Design</h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Diseño centrado en el usuario y experiencia óptima
+                    </p>
+                    <div class="space-y-2 text-gray-300 text-sm">
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Investigación
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Prototipado
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Accesibilidad
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756 3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Mantenimiento</h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Soporte continuo y actualizaciones de seguridad
+                    </p>
+                    <div class="space-y-2 text-gray-300 text-sm">
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Seguridad
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Rendimiento
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                            Soporte 24/7
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="min-h-screen flex items-center justify-center relative py-32">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h2 class="text-9xl md:text-[12rem] font-black text-emerald-900/10 z-1">FAQ</h2>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 text-emerald-400">
+                Preguntas Frecuentes
+            </h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="glass-card rounded-2xl border border-emerald-500/30 backdrop-blur-xl">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item border-b border-emerald-500/20">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-emerald-500/5 transition-colors" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-white">¿Qué servicios ofreces?</span>
+                            <svg class="w-5 h-5 text-emerald-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-300">
+                            Diseño de Landing Pages, Desarrollo Frontend y QA Testing profesional.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item border-b border-emerald-500/20">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-emerald-500/5 transition-colors" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-white">¿Cómo garantizas la calidad?</span>
+                            <svg class="w-5 h-5 text-emerald-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-300">
+                            Utilizo metodologías de uTest para encontrar fallos antes de que tus clientes los vean.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item border-b border-emerald-500/20">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-emerald-500/5 transition-colors" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-white">¿En qué tiempo entregas un proyecto?</span>
+                            <svg class="w-5 h-5 text-emerald-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-300">
+                            Depende de la complejidad, pero una Landing Page suele estar lista en 5-7 días.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item border-b border-emerald-500/20">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-emerald-500/5 transition-colors" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-white">¿Los diseños son aptos para móviles?</span>
+                            <svg class="w-5 h-5 text-emerald-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-300">
+                            Sí, todos mis proyectos son 100% responsivos y se ven perfectos en cualquier dispositivo.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-emerald-500/5 transition-colors" onclick="toggleFAQ(this)">
+                            <span class="text-lg font-medium text-white">¿Qué tecnologías utilizas?</span>
+                            <svg class="w-5 h-5 text-emerald-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-300">
+                            Trabajo principalmente con React.js, Node.js y bases de datos SQL para soluciones robustas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Briefing Section -->
+    <section id="briefing" class="min-h-screen flex items-center justify-center relative py-32">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h2 class="text-9xl md:text-[12rem] font-black text-emerald-900/10 z-1">BRIEFING</h2>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 text-emerald-400">
+                Inicia tu Proyecto
+            </h2>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="glass-card p-8 rounded-2xl border border-emerald-500/30">
+                    <form id="projectForm" action="https://formspree.io/f/mjgpeoel" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-400 mb-2">Nombre</label>
+                                <input type="text" name="name" class="w-full px-4 py-3 bg-black/50 border border-emerald-500/30 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="Tu nombre" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-2">Email</label>
+                                <input type="email" name="email" class="w-full px-4 py-3 bg-black/50 border border-emerald-500/30 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="tu@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-2">Tipo de Proyecto</label>
+                            <select class="w-full px-4 py-3 bg-black/50 border border-emerald-500/30 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-colors">
+                                <option value="">Selecciona un tipo</option>
+                                <option value="web">Web desde cero</option>
+                                <option value="testing">Testing/QA</option>
+                                <option value="redesign">Rediseño</option>
+                                <option value="landing">Landing Page</option>
+                                <option value="design">Diseño UX/UI</option>
+                                <option value="maintenance">Mantenimiento</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-2">Mensaje</label>
+                            <textarea name="message" rows="4" class="w-full px-4 py-3 bg-black/50 border border-emerald-500/30 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-colors resize-none" placeholder="Describe tu proyecto..." required></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-2">Presupuesto</label>
+                            <select class="w-full px-4 py-3 bg-black/50 border border-emerald-500/30 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-colors">
+                                <option value="">Rango de presupuesto</option>
+                                <option value="500">Menos de $500</option>
+                                <option value="1000">$500 - $1,000</option>
+                                <option value="2500">$1,000 - $2,500</option>
+                                <option value="5000">$2,500 - $5,000</option>
+                                <option value="10000">$5,000 - $10,000</option>
+                                <option value="10000+">Más de $10,000</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Anti-spam field - invisible to humans -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="text-center">
+                            <button type="submit" class="magnetic-btn px-12 py-4 bg-emerald-500 text-black font-bold rounded-full hover:bg-emerald-400 transition-all transform hover:scale-105">
+                                Enviar Briefing
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lightbox Gallery -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm">
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-4xl hover:text-emerald-400 transition-colors z-10">
+                ×
+            </button>
+            <img id="lightboxImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-center">
+                <p id="lightboxCaption" class="text-sm opacity-75"></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
