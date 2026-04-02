@@ -571,11 +571,18 @@ window.addEventListener('error', (e) => {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    initNavigation();
-    initProjectForm();
-    initLightbox();
-    initFAQ();
-    initEnergyCircles();
-    initAutoSliders();
-    initTabTitleGlitch();
+    const btn = document.querySelector('[id*="menu-toggle"]'); 
+    const menu = document.querySelector('[id*="mobile-menu"]');
+    if (btn && menu) {
+        btn.onclick = () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        };
+        menu.querySelectorAll('a').forEach(link => {
+            link.onclick = () => {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            };
+        });
+    }
 });
