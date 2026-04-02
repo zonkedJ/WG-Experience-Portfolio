@@ -417,15 +417,15 @@ function initLightbox() {
 // Project images data
 const projectImages = {
     farmacia: [
-        { src: 'farmacia.png', caption: 'Farmacia Digital - Vista Principal' },
-        { src: 'farmacia1.png', caption: 'Farmacia Digital - Catálogo de Productos' },
-        { src: 'farmacia2.png', caption: 'Farmacia Digital - Carrito de Compras' }
+        { src: 'assets/farmacia.png', caption: 'Farmacia Digital - Vista Principal' },
+        { src: 'assets/farmacia1.png', caption: 'Farmacia Digital - Catálogo de Productos' },
+        { src: 'assets/farmacia2.png', caption: 'Farmacia Digital - Carrito de Compras' }
     ],
     veterinaria: [
-        { src: 'veterinaria1.png', caption: 'Veterinaria E-clinic - Dashboard' },
-        { src: 'veterinaria2.png', caption: 'Veterinaria E-clinic - Gestión de Citas' },
-        { src: 'veterinaria3.png', caption: 'Veterinaria E-clinic - Historial Médico' },
-        { src: 'veterinaria4.png', caption: 'Veterinaria E-clinic - Inventario' }
+        { src: 'assets/veterinaria1.png', caption: 'Veterinaria E-clinic - Dashboard' },
+        { src: 'assets/veterinaria2.png', caption: 'Veterinaria E-clinic - Gestión de Citas' },
+        { src: 'assets/veterinaria3.png', caption: 'Veterinaria E-clinic - Historial Médico' },
+        { src: 'assets/veterinaria4.png', caption: 'Veterinaria E-clinic - Inventario' }
     ]
 };
 
