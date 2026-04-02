@@ -417,41 +417,6 @@ function initLightbox() {
     });
 }
 
-// Project images data
-const projectImages = {
-    farmacia: [
-        { src: 'assets/farmacia.png', caption: 'Farmacia Digital - Vista Principal' },
-        { src: 'assets/farmacia1.png', caption: 'Farmacia Digital - Catálogo de Productos' },
-        { src: 'assets/farmacia2.png', caption: 'Farmacia Digital - Carrito de Compras' }
-    ],
-    veterinaria: [
-        { src: 'assets/veterinaria1.png', caption: 'Veterinaria E-clinic - Dashboard' },
-        { src: 'assets/veterinaria2.png', caption: 'Veterinaria E-clinic - Gestión de Citas' },
-        { src: 'assets/veterinaria3.png', caption: 'Veterinaria E-clinic - Historial Médico' },
-        { src: 'assets/veterinaria4.png', caption: 'Veterinaria E-clinic - Inventario' }
-    ]
-};
-
-let currentProject = '';
-let currentImageIndex = 0;
-
-// Open lightbox
-function openLightbox(project, imageIndex = 0) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    
-    currentProject = project;
-    currentImageIndex = imageIndex;
-    
-    const images = projectImages[project];
-    if (images && images[imageIndex]) {
-        lightboxImage.src = images[imageIndex].src;
-        lightboxCaption.textContent = images[imageIndex].caption;
-        lightbox.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-}
 
 // Close lightbox
 function closeLightbox() {
