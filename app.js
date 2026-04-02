@@ -339,9 +339,33 @@ function initNavigation() {
     
     // Mobile menu toggle
     if (mobileMenuBtn) {
+        const mobileMenu = document.getElementById('mobileMenu');
+        
         mobileMenuBtn.addEventListener('click', () => {
-            // Mobile menu implementation
-            console.log('Mobile menu clicked');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('.nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
         });
     }
 }
