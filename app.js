@@ -195,7 +195,7 @@ function initGSAPAnimations() {
     }
     
     // Hero buttons animation with stagger
-    const heroButtons = document.querySelectorAll('.hero-title + p + div .magnetic-btn');
+    const heroButtons = document.querySelectorAll('.hero-subtitle + div .magnetic-btn');
     if (heroButtons.length > 0) {
         heroTimeline.from(heroButtons, {
             duration: 0.8,
@@ -207,7 +207,7 @@ function initGSAPAnimations() {
     }
     
     // Hero badges animation
-    const heroBadges = document.querySelectorAll('.hero-title + p + div + div + div span');
+    const heroBadges = document.querySelectorAll('.hero-subtitle + div + div span');
     if (heroBadges.length > 0) {
         heroTimeline.from(heroBadges, {
             duration: 0.6,
@@ -219,7 +219,7 @@ function initGSAPAnimations() {
     }
     
     // Energy circles animation
-    const energyContainer = document.getElementById('lottie-container');
+    const energyContainer = document.getElementById('energy-container');
     if (energyContainer) {
         heroTimeline.from(energyContainer, {
             duration: 1.8,
