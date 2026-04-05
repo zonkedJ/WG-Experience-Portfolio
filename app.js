@@ -428,7 +428,8 @@ function closeLightbox() {
 // Project Slider System
 const projectSliders = {
     farmacia: { current: 0, total: 3 },
-    veterinaria: { current: 0, total: 4 }
+    veterinaria: { current: 0, total: 4 },
+    dachyypink: { current: 0, total: 3 }
 };
 
 function slideProject(project, direction) {
