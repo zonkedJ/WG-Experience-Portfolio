@@ -156,7 +156,7 @@
                 Proyectos ADSO
             </h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 w-full max-w-7xl mx-auto px-4">
                 <!-- Project 1 - Farmacia Digital -->
                 <div class="project-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
                     <div class="mb-6">
@@ -312,6 +312,57 @@
                             <div class="flex items-center">
                                 <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
                                 Vercel
+                            </div>
+                        </div>
+                    
+                <!-- Project 4 - Fundación Huellitas -->
+                <div class="project-card glass-card p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition-all backdrop-blur-xl">
+                    <div class="mb-6">
+                        <!-- Image Slider -->
+                        <div class="relative w-full aspect-video mb-4 rounded-xl overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-in-out h-full" id="huellitas-slider">
+                                <img src="assets/perro1.png" alt="Fundación Huellitas - Vista Principal" class="w-full h-full object-cover flex-shrink-0 max-w-full h-auto">
+                                <img src="assets/perro2.png" alt="Fundación Huellitas - Adopciones" class="w-full h-full object-cover flex-shrink-0 max-w-full h-auto">
+                                <img src="assets/perro3.png" alt="Fundación Huellitas - Formulario" class="w-full h-full object-cover flex-shrink-0 max-w-full h-auto">
+                            </div>
+                            <!-- Slider Controls -->
+                            <button onclick="slideProject('huellitas', -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-emerald-500/50 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <button onclick="slideProject('huellitas', 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-emerald-500/50 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <!-- Slider Indicators -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full" id="huellitas-indicator-0"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="huellitas-indicator-1"></span>
+                                <span class="w-2 h-2 bg-white/50 rounded-full" id="huellitas-indicator-2"></span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Fundación Huellitas - Landing Page</h3>
+                        <p class="text-gray-400 mb-4">
+                            Plataforma de adopción: Galería, filtros, formulario de contacto
+                        </p>
+                        <div class="space-y-2 text-gray-300 mb-4 md:mb-6">
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                HTML5
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                Tailwind CSS
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                CSS3
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                                JavaScript Vanilla
                             </div>
                         </div>
                     </div>
