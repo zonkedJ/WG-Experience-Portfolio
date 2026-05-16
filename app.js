@@ -430,7 +430,8 @@ const projectSliders = {
     farmacia: { current: 0, total: 3 },
     veterinaria: { current: 0, total: 4 },
     dachyypink: { current: 0, total: 7 },
-    huellitas: { current: 0, total: 3 }
+    huellitas: { current: 0, total: 3 },
+    gloaming: { current: 0, total: 4 }
 };
 
 function slideProject(project, direction) {
